@@ -1,0 +1,15 @@
+{
+  "name": "webpack-sourcemap-unpacker",
+  "version": "1.0.0",
+  "main": "webpack-sourcemap-unpacker.js",
+  "license": "MIT",
+  "bin": {
+    "WebpackSourcemapUnpacker": "webpack-sourcemap-unpacker.js"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "fs-extra": "^7.0.0",
+    "glob": "^7.1.3",
+    "source-map": "^0.7.3"
+  }
+}
