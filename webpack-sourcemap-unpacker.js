@@ -40,10 +40,24 @@ program.action((options) => {
 
             const folder = path.resolve(path.join(options.output, path.dirname(parts[1])));
             const filename = path.basename(parts[1]);
-            const abs = path.resolve(path.join(folder, filename));
+            const extname = path.extname(filename);
+            const absPath = path.resolve(path.join(folder, filename));
+
+            console.info(`output to file: ${absPath}`);
+
+            let source;
+            switch (extname) {
+                // plain text files
+                case '.glsl':
+                    const module = eval(`let module={};${sources[idx]}\nmodule;`);
+                    source = module.exports;
+                    break;
+                default:
+                    source = sources[idx];
+            }
+
             fse.ensureDirSync(folder);
-            console.info(`output to file: ${abs}`);
-            fse.writeFileSync(abs, sources[idx]);
+            fse.writeFileSync(absPath, source);
         });
     });
 });
