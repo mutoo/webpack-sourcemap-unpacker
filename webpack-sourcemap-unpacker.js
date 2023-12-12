@@ -61,8 +61,8 @@ program.action((options) => {
                 case '.gif':
                 case '.png':
                 case '.obj':
-                    const exports = evalModule(sources[idx]).exports;
                     try {
+                        const exports = evalModule(sources[idx]).exports;
                         source = dataUriToBuffer(exports);
                     } catch (e) {
                         console.info(`It's not a binary file: ${absPath}`);
